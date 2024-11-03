@@ -2,7 +2,8 @@ import { ThemeProvider, styled } from "styled-components";
 import { lightTheme } from "./utils/Themes";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Authentication from "./pages/Authentication";
-import { useState } from "react";
+// import { useState } from "react";
+import { useSelector } from "react-redux";
 import Navbar from "./components/Navbar";
 // import { Dashboard } from "@mui/icons-material";
 import Dashboard from "./pages/Dashboard";
@@ -23,16 +24,16 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [user, setUser] = useState(true);
+  const {currentUser} = useSelector((state) => state.user)
   // we will be using style componenets
   // https://styled-components.com/docs/basics
 
   return (
     <ThemeProvider theme={lightTheme}>
       <BrowserRouter>
-        {user ? (
+        {currentUser ? (
           <Container>
-            <Navbar />
+            <Navbar currentUser={currentUser}/>
             <Routes>
               <Route path="/" exact element={<Dashboard />} />
               <Route path="/workouts" exact element={<Workouts />} />

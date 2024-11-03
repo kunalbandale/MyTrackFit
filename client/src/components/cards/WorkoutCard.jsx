@@ -17,7 +17,6 @@ const Card = styled.div`
     padding: 12px 14px;
   }
 `;
-
 const Category = styled.div`
   width: fit-content;
   font-size: 14px;
@@ -51,22 +50,27 @@ const Details = styled.div`
   align-items: center;
   gap: 6px;
 `;
-const WorkoutCard = () => {
-    return <Card>
-        <Category>#Legs  </Category>
-        <Name>Back Squat</Name>
-        <Sets>Count: 5sets * 10reps</Sets>
-        <Flex>
-            <Details>
-                <FitnessCenterRounded sx={{fontSize: "20px"}}/>
-                30kg
-            </Details>
-            <Details>
-                <TimelapseRounded sx={{fontSize: "20px"}}/>
-                30kg
-            </Details>
-        </Flex>
+
+const WorkoutCard = ({ workout }) => {
+  return (
+    <Card>
+      <Category>#{workout?.category}</Category>
+      <Name>{workout?.workoutName}</Name>
+      <Sets>
+        Count: {workout?.sets} sets X {workout?.reps} reps
+      </Sets>
+      <Flex>
+        <Details>
+          <FitnessCenterRounded sx={{ fontSize: "20px" }} />
+          {workout?.weight} kg
+        </Details>
+        <Details>
+          <TimelapseRounded sx={{ fontSize: "20px" }} />
+          {workout?.duration} min
+        </Details>
+      </Flex>
     </Card>
-}
+  );
+};
 
 export default WorkoutCard;
