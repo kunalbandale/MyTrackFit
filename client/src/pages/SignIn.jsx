@@ -3,8 +3,8 @@ import styled from "styled-components";
 import TextInput from "../components/TextInput";
 import Button from "../components/Button";
 import { useState } from "react";
-import {UserSignIn} from "../api";
-import {loginSuccess} from "../redux/reducers/userSlice";
+import { UserSignIn } from "../api";
+import { loginSuccess } from "../redux/reducers/userSlice";
 import { useDispatch } from "react-redux";
 
 const Container = styled.div`
